@@ -3,7 +3,6 @@ import { useState } from 'react';
 import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 

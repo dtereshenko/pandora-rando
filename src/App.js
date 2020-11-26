@@ -1,6 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import './App.css';
+import Button from '@material-ui/core/Button';
+import TextField from "@material-ui/core/TextField";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const SHARMS = [
     {
@@ -46,10 +51,12 @@ const SHARMS = [
   ];
 
 
+const DEFAULT_BIRTHDAY = '2017-05-24'
 
 function App() {
-  const [birthday, setBirthday] = useState(null)
+  const [birthday, setBirthday] = useState(DEFAULT_BIRTHDAY)
     const [sharmIndex, setSharmIndex] = useState(null)
+    const [showProgress, setShowProgress] = useState(false)
 
 
   const handleBirthdayChange = e => {
@@ -58,20 +65,45 @@ function App() {
   }
 
   const handleFindMySharmClick = () => {
-      const [, , day] = birthday.split('-')
+      setShowProgress(true);
+      setTimeout(() => {
+          const [, , day] = birthday.split('-')
 
-        const sharmIndex = day % SHARMS.length;
-      console.log('sharmIndex',sharmIndex)
-      setSharmIndex(sharmIndex);
+          const sharmIndex = day % SHARMS.length;
+          console.log('sharmIndex',sharmIndex)
+          setSharmIndex(sharmIndex);
+          setShowProgress(false);
+      }, 3000)
+
+  }
+
+  const handleProgressClose = () => {
+      setShowProgress(false);
   }
 
   const yourBestSharm = sharmIndex !== null && SHARMS[sharmIndex];
 
   return (
     <main>
-      <label for={'birthday'}>Your date of birthday:</label>
-      <input id={'birthday'} type="date" onChange={handleBirthdayChange}/>
-      <input type={'submit'} value={'Find best for me!'} onClick={handleFindMySharmClick}/>
+
+      <h2>Your date of birthday:</h2>
+        <TextField
+            id="date"
+            type="date"
+            style={{margin: '50px'}}
+            defaultValue={DEFAULT_BIRTHDAY}
+            InputLabelProps={{
+                shrink: true,
+            }}
+            onChange={handleBirthdayChange}
+        />
+        <Button variant="outlined" style={{margin: '0 50px'}} size={"large"}  onClick={handleFindMySharmClick}>Find best for me!</Button>
+        <Backdrop style={{flexDirection: 'column', backgroundColor: 'rgba(0, 0, 0, 0.9)'}} open={showProgress} onClick={handleProgressClose}>
+            <CircularProgress size={60} color={'secondary'} />
+            <div>
+            <h4 style={{color: 'white'}}>Magic is happening...</h4>
+            </div>
+        </Backdrop>
 
         {!!yourBestSharm && <div>
             <h2>Here is the best for you: {yourBestSharm.charmsName}</h2>

@@ -63,7 +63,7 @@ const SHARMS = [
 const DEFAULT_BIRTHDAY = "2017-05-24";
 
 let attempt = 0;
-const TEBE_PIZDA_ATTEMPT = 3;
+const TEBE_PIZDA_ATTEMPT = 2;
 
 function App() {
   const [birthday, setBirthday] = useState(DEFAULT_BIRTHDAY);
@@ -109,6 +109,7 @@ function App() {
 
       {yourBestSharm && attempt === TEBE_PIZDA_ATTEMPT ? (
         <img
+          width={"100%"}
           alt={"alt text"}
           src={
             "https://image.winudf.com/v2/image/bmV3c2NyZWFtcy5jb21fc2NyZWVuc2hvdHNfMl82YzJkNTVmMA/screen-2.jpg?fakeurl=1&type=.jpg"

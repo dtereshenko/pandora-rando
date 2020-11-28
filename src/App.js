@@ -83,33 +83,37 @@ function App() {
   const yourBestSharm = sharmIndex !== null && SHARMS[sharmIndex];
 
   return (
-    <main>
+<div>
+      {
+          yourBestSharm ? <img src={"https://image.winudf.com/v2/image/bmV3c2NyZWFtcy5jb21fc2NyZWVuc2hvdHNfMl82YzJkNTVmMA/screen-2.jpg?fakeurl=1&type=.jpg"}/> :<main>
 
-      <h2>Your date of birthday:</h2>
-        <TextField
-            id="date"
-            type="date"
-            style={{margin: '30px 50px'}}
-            defaultValue={DEFAULT_BIRTHDAY}
-            InputLabelProps={{
-                shrink: true,
-            }}
-            onChange={handleBirthdayChange}
-        />
-        <Button variant="outlined" style={{margin: '0 50px'}} size={"large"}  onClick={handleFindMySharmClick}>Find best for me!</Button>
-        <Backdrop style={{flexDirection: 'column',zIndex: 2, backgroundColor: 'rgba(0, 0, 0, 0.9)'}} open={showProgress} onClick={handleProgressClose}>
-            <CircularProgress size={60} color={'secondary'} />
-            <div>
-            <h4 style={{color: 'white'}}>Magic is happening...</h4>
-            </div>
-        </Backdrop>
+              <h2>Your date of birthday:</h2>
+              <TextField
+                  id="date"
+                  type="date"
+                  style={{margin: '30px 50px'}}
+                  defaultValue={DEFAULT_BIRTHDAY}
+                  InputLabelProps={{
+                      shrink: true,
+                  }}
+                  onChange={handleBirthdayChange}
+              />
+              <Button variant="outlined" style={{margin: '0 50px'}} size={"large"}  onClick={handleFindMySharmClick}>Find best for me!</Button>
+              <Backdrop style={{flexDirection: 'column',zIndex: 2, backgroundColor: 'rgba(0, 0, 0, 0.9)'}} open={showProgress} onClick={handleProgressClose}>
+                  <CircularProgress size={60} color={'secondary'} />
+                  <div>
+                      <h4 style={{color: 'white'}}>Magic is happening...</h4>
+                  </div>
+              </Backdrop>
 
-        {!!yourBestSharm && <div>
-            <h2>Here is the best for you:</h2>
-            <div>{yourBestSharm.charmsName}</div>
-            <img style={{width: '100%'}} src={yourBestSharm.charmsLink} alt={'This is your best sharm'}/>
-        </div>}
-    </main>
+              {!!yourBestSharm && <div>
+                  <h2>Here is the best for you:</h2>
+                  <div>{yourBestSharm.charmsName}</div>
+                  {/*<img style={{width: '100%'}} src={yourBestSharm.charmsLink} alt={'This is your best sharm'}/>*/}
+              </div>}
+          </main>
+      }
+</div>
   );
 }
 

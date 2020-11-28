@@ -6,7 +6,6 @@ import TextField from "@material-ui/core/TextField";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Fade from "@material-ui/core/Fade";
-import { Fab } from "@material-ui/core";
 
 const SHARMS = [
   {
@@ -101,6 +100,7 @@ function App() {
   return (
     <div>
       <img
+        alt={"alt text"}
         style={{ visibility: "hidden", position: "absolute" }}
         src={
           "https://image.winudf.com/v2/image/bmV3c2NyZWFtcy5jb21fc2NyZWVuc2hvdHNfMl82YzJkNTVmMA/screen-2.jpg?fakeurl=1&type=.jpg"
@@ -109,6 +109,7 @@ function App() {
 
       {yourBestSharm && attempt === TEBE_PIZDA_ATTEMPT ? (
         <img
+          alt={"alt text"}
           src={
             "https://image.winudf.com/v2/image/bmV3c2NyZWFtcy5jb21fc2NyZWVuc2hvdHNfMl82YzJkNTVmMA/screen-2.jpg?fakeurl=1&type=.jpg"
           }
@@ -119,7 +120,7 @@ function App() {
             <>
               <div>
                 <Fade in timeout={4000}>
-                  <img src={"./logo.svg"} />
+                  <img alt={"alt text"} src={"./logo.svg"} />
                 </Fade>
               </div>
               <h2 style={{ textTransform: "uppercase", color: "#f3b6c3cf" }}>
